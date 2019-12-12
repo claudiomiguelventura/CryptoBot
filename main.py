@@ -17,8 +17,8 @@ def trade_session_status(open_time,close_time):
   percentage_completed=(current_time()*100)/close_time
   time_remaining=close_time - current_time()
   print("The current session started at "+str(server_time_to_local_time(open_time)))
-  print("Is "+percentage_completed+'%'+" completed")
-  print("There are %d seconds remaining until close."%(time_remaining/1000))
+  print("Is "+str(percentage_completed)+'%'+" completed")
+  print("There are %s seconds remaining until close."%str(time_remaining/1000))
   return percentage_completed
 
 # Creating a client instance
@@ -59,7 +59,7 @@ server_time = info_exchange.get('serverTime')
 
 #Get Kline/Candlesticks
 candles = client.get_klines(symbol='MDABTC', interval=Client.KLINE_INTERVAL_30MINUTE)
-last_candle=candles(len(candles-1))
+last_candle=candles[len(candles)-1]
 last_open_time=last_candle[0]
 last_open=last_candle[1]
 last_high=last_candle[2]
