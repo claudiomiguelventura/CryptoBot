@@ -14,7 +14,7 @@ def current_time():
   return info_exchange.get('serverTime')
 
 def trade_session_status(open_time,close_time):
-  percentage_completed=(curren_time()*100)/close_time
+  percentage_completed=(current_time()*100)/close_time
   time_remaining=close_time - current_time()
   print("The current session started at "+str(server_time_to_local_time(open_time)))
   print("Is "+percentage_completed+'%'+" completed")
