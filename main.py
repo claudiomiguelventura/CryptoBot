@@ -59,13 +59,14 @@ server_time = info_exchange.get('serverTime')
 
 #Get Kline/Candlesticks
 candles = client.get_klines(symbol='MDABTC', interval=Client.KLINE_INTERVAL_30MINUTE)
-last_open_time=candles[0]
-last_open=candles[1]
-last_high=candles[2]
-last_low=candles[3]
-last_close=candles[4]
-last_volume=candles[5]
-last_close_time=candles[6]
+last_candle=candles(len(candles-1))
+last_open_time=last_candle[0]
+last_open=last_candle[1]
+last_high=last_candle[2]
+last_low=last_candle[3]
+last_close=last_candle[4]
+last_volume=last_candle[5]
+last_close_time=last_candle[6]
 
 trade_session_status(last_open_time,last_close_time)
 
