@@ -6,12 +6,6 @@ import time
 # Own modules import
 import binance_keychain
 
-#Get Exchange Info
-info_exchange = client.get_exchange_info()
-timezone = info_exchange.get('timezone')
-server_time = info_exchange.get('serverTime')
-
-
 def server_time_to_local_time(servertime):
   return time.ctime(servertime/1000)
 
@@ -27,11 +21,15 @@ def trade_session_status(open_time,close_time):
   print("There are %d seconds remaining until close."%(time_remaining/1000))
   return percentage_completed
 
-
-
 # Creating a client instance
 client = Client(binance_keychain.api_key, binance_keychain.api_secret)
 print(client)
+
+#Get Exchange Info
+info_exchange = client.get_exchange_info()
+timezone = info_exchange.get('timezone')
+server_time = info_exchange.get('serverTime')
+
 
 #Ping the server
 #print(client.ping())
